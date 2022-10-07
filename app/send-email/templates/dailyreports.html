@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th {
+            border: 1px solid #5ca0f2;
+            text-align: left;
+            padding: 8px;
+            color: #ffffff;
+            font-size: 13px!important;
+        }
+        
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            color: #332e38;
+            font-size: 13px!important;
+        }
+        /* tr:nth-child(even) {
+  background-color: #dddddd;
+} */
+        
+        tr:first-child {
+            background-color: #5ca0f2;
+        }
+        
+        tr:last-child {
+            background-color: #5ca0f2;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+        
+        .content-center {
+            align-items: center;
+            text-align: center;
+        }
+        
+        li {
+            font-weight: bold;
+        }
+        
+        .right-div {
+            border: 2px solid black;
+            margin-top: 100px;
+        }
+        
+        .page-break h1 {
+            font-size: 20px!important;
+        }
+        
+        .logo {
+            width: 400px;
+            height: 150px;
+        }
+        
+        .color td {
+            color: #ffffff!important;
+        }
+        
+        .second_page_title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 40px;
+        }
+        
+        .layer_one {
+            display: -webkit-box;
+            display: -webkit-flex;
+            -webkit-flex-wrap: wrap;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 90%;
+            margin-left: 66px;
+        }
+        
+        .layer_two {
+            display: -webkit-box;
+            display: -webkit-flex;
+            -webkit-flex-wrap: wrap;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 50px;
+            width: 60%;
+            margin-left: 132px;
+        }
+        
+        .layer_child {
+            height: 80px;
+            width: 100px;
+            margin: 20px;
+        }
+        
+        .inbox_child_one {
+            height: 80px;
+            border: 2px solid #5ca0f2;
+            background-color: #5ca0f2;
+            color: #ffffff
+        }
+        
+        .inbox_child_two {
+            height: 80px;
+            /* border: 2px solid black; */
+        }
+        
+        .inbox_child_one_content {
+            font-family: 'Roboto', sans-serif;
+            font-size: 30px;
+            position: relative;
+            top: -8px;
+        }
+        
+        .inbox_child_one_one_content {
+            margin-top: 55px;
+            margin-left: 100px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 40px;
+        }
+        
+        .inbox_child_two_content {
+            margin-top: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 12px;
+        }
+        
+        .inbox_child_two_two_content {
+            margin-top: 10px;
+            /* margin-left: 60px; */
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-left: 20px; margin-right: 20px">
+
+
+        <!-- First page -->
+        <div class="content-center">
+            <div class="content-center">
+                <h1 class="content-center" style="font-family: 'Roboto', sans-serif; font-size: 35px;"> <b>Daily Reports</b>
+                </h1>
+                <h1 style="font-family: 'Roboto', sans-serif;  font-size: 35px;"><b>{{dataObj.dailydate}}</b></h1><br>
+                <h3 style="font-family: 'Roboto', sans-serif; font-size: 20px">Company : {{dataObj.company.name}}</h3>
+                <br><br>
+                <img class="logo" style="font-family: 'Roboto', sans-serif;" src="https://operationfile.s3.ap-south-1.amazonaws.com/{{dataObj.company.logosize1}}" alt="Company Image here">
+            </div>
+
+        </div>
+        <br>
+        <div class="page-break"><br>
+            <h2 class="content-center second_page_title"> <b>Today's Data</b> </h2>
+            <br>
+            <div class=" content-center layer_one">
+                <div class="layer_child">
+                    <div class="inbox_child_one">
+                        <p class="inbox_child_one_content">{{dataObj.dailydata.patientDataTotal}}</p>
+                    </div>
+                    <div class="inbox_child_two">
+                        <p class="inbox_child_two_content"> <b>Total Queries</b> </p>
+                    </div>
+                </div>
+                <div class="layer_child">
+                    <div class="inbox_child_one">
+                        <p class="inbox_child_one_content">{{dataObj.dailydata.countryviltotal}}</p>
+                    </div>
+                    <div class="inbox_child_two">
+                        <p class="inbox_child_two_content"> <b>Total VIL Issued
+                        </b> </p>
+                    </div>
+                </div>
+                <div class="layer_child">
+                    <div class="inbox_child_one">
+                        <p class="inbox_child_one_content">{{dataObj.dailydata.arrivalConfirmed}}</p>
+                    </div>
+                    <div class="inbox_child_two">
+                        <p class="inbox_child_two_content" style=" text-align: center"> <b>Total Patient Arrival 
+                            Confirmed
+                            </b> </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="layer_two">
+                <div class="layer_child">
+                    <div class="inbox_child_one">
+                        <p class="inbox_child_one_content" style=" text-align: center">{{dataObj.dailydata.arrivingToday}}</p>
+                    </div>
+                    <div class="inbox_child_two">
+                        <p class="inbox_child_two_content" style=" text-align: center"> <b>Patient Arriving Today
+                        </b> </p>
+                    </div>
+                </div>
+                <div class="layer_child">
+                    <div class="inbox_child_one">
+                        <p class="inbox_child_one_content" style=" text-align: center">{{dataObj.dailydata.arrivingSevenDays}}</p>
+                    </div>
+                    <div class="inbox_child_two">
+                        <p class="inbox_child_two_content" style=" text-align: center"> <b>Patient arriving Within Next 7 days
+                        </b> </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="page-break"><br>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Date: {{dataObj.dailydate}}</b> </h1>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Patient Data</b> </h1>
+
+            <br>
+            <table>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>UHID Code</th>
+                    <th>Country</th>
+                    <th>Treatment</th>
+                    <th>Status</th>
+                </tr>
+                {{#dataObj.dailydata}}{{#patientdata}}
+
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{uhidcode}}{{mhid}}</td>
+                    <td>{{country}}</td>
+                    <td>{{treatment}}</td>
+                    <td>{{status}}</td>
+                </tr>
+
+                {{/ patientdata}} {{/dataObj.dailydata}}
+
+                <tr class="table-warning color">
+
+                </tr>
+            </table><br>
+
+        </div>
+        <div class="page-break"><br>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Date: {{dataObj.dailydate}}</b> </h1>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Patient Arrival Data</b> </h1>
+
+            <br>
+            <table>
+                <tr>
+                    <th>Arrival Date & Time</th>
+                    <th>Patient Name</th>
+                    <th>Country</th>
+                    <th>Treatment</th>
+                    <th>Flight Name</th>
+                    <th>Flight No</th>
+
+                </tr>
+                {{#dataObj.dailydata}}{{#todayArrivalConfirmed}}
+
+                <tr>
+                    <td>{{arrivalDate}}</td>
+                    <td>{{patient.0.name}}</td>
+                    <td>{{patient.0.country}}</td>
+                    <td>{{patient.0.treatment}}</td>
+                    <td>{{flightName}}</td>
+                    <td>{{flightNo}}</td>
+
+                </tr>
+
+                {{/ todayArrivalConfirmed}} {{/dataObj.dailydata}}
+
+                <tr class="table-warning color">
+
+                </tr>
+            </table><br>
+
+        </div>
+        <!-- 2nd page -->
+        <div class="page-break"><br>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Date: {{dataObj.dailydate}}</b> </h1>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Country wise Queries</b> </h1>
+
+            <br>
+            <table>
+                <tr>
+                    <th>Country</th>
+                    <th>Queries</th>
+                    <th>VIL</th>
+                    <th>Patient Confirmation</th>
+                    <th>Referral Partner</th>
+                </tr>
+                {{#dataObj.dailydata}}{{#country}}
+
+                <tr>
+                    <td>{{value}}</td>
+                    <td>{{count}}</td>
+                    <td>{{vil}}</td>
+                    <td>{{confirmation}}</td>
+                    <td>{{refferalpartner}}</td>
+                </tr>
+
+                {{/ country}} {{/dataObj.dailydata}}
+
+                <tr class="table-warning color">
+                    <td>Total</td>
+                    <td>{{dataObj.dailydata.countryquerytotal}}</td>
+                    <td>{{dataObj.dailydata.countryviltotal}}</td>
+                    <td>{{dataObj.dailydata.countryconfirmationtotal}}</td>
+                    <td>{{dataObj.dailydata.countrypartnertotal}}</td>
+                </tr>
+
+            </table><br>
+
+        </div>
+        <!-- 3rd page -->
+        <div class="page-break"><br>
+            <h1 class="content-center" style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Date: {{dataObj.dailydate}}</b> </h1>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Treatment wise Queries</b> </h1>
+
+            <br>
+            <table>
+                <tr>
+                    <th>Treatment</th>
+                    <th>Queries</th>
+                    <th>VIL</th>
+                    <th>Patient Confirmation</th>
+                    <th>Referral Partner</th>
+
+                </tr>
+                {{#dataObj.dailydata}}{{#treatment}}
+
+                <tr>
+
+                    <td>{{value}}</td>
+                    <td>{{count}}</td>
+                    <td>{{vil}}</td>
+                    <td>{{confirmation}}</td>
+                    <td>{{refferalpartner}}</td>
+
+                </tr>
+                {{/ treatment}} {{/dataObj.dailydata}}
+
+                <tr class="table-warning color">
+                    <td>Total</td>
+                    <td>{{dataObj.dailydata.treatmentquerytotal}}</td>
+                    <td>{{dataObj.dailydata.treatmentviltotal}}</td>
+                    <td>{{dataObj.dailydata.treatmentconfirmationtotal}}</td>
+                    <td>{{dataObj.dailydata.treatmentpartnertotal}}</td>
+                </tr>
+            </table><br>
+
+        </div>
+        <!-- 4th page -->
+        <div class="page-break"><br>
+            <h1 class="content-center" style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Date: {{dataObj.dailydate}}</b> </h1>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Hospital wise Queries</b> </h1>
+
+            <br>
+            <table>
+                <tr>
+                    <th>Hospitals</th>
+                    <th>Queries</th>
+                    <th>VIL</th>
+                    <th>Patient Confirmation</th>
+
+                </tr>
+                {{#dataObj.dailydata}}{{#hospital}}
+
+                <tr>
+
+                    <td>{{value}}</td>
+                    <td>{{count}}</td>
+                    <td>{{hospitalvil}}</td>
+                    <td>{{hospitalconfirmation}}</td>
+
+                </tr>
+                {{/ hospital}} {{/dataObj.dailydata}}
+
+                <tr class="table-warning color">
+                    <td>Total</td>
+                    <td>{{dataObj.dailydata.hospitalcounttotal}}</td>
+                    <td>{{dataObj.dailydata.hospitalviltotal}}</td>
+                    <td>{{dataObj.dailydata.hospitalconfirmationtotal}}</td>
+
+                </tr>
+            </table><br>
+        </div>
+
+        <!-- 5th page -->
+        <!-- <div class="page-break"><br>
+            <h1 class="content-center" style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Data for Current Month <br>( {{dataObj.monthlydate}} - Till Today)</b> </h1>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Country wise Queries</b> </h1>
+
+            <br>
+            <table>
+                <tr>
+                    <th>Country</th>
+                    <th>Queries</th>
+                    <th>VIL</th>
+                    <th>Patient Confirmation</th>
+                    <th>Referral Partner</th>
+                </tr>
+                {{#dataObj.monthlydata}}{{#country}}
+
+                <tr>
+
+                    <td>{{value}}</td>
+                    <td>{{count}}</td>
+                    <td>{{vil}}</td>
+                    <td>{{confirmation}}</td>
+                    <td>{{refferalpartner}}</td>
+                </tr>
+                {{/country}} {{/dataObj.monthlydata}}
+
+                <tr class="table-warning color">
+                    <td>Total</td>
+                    <td>{{dataObj.monthlydata.countryquerytotal}}</td>
+                    <td>{{dataObj.monthlydata.countryviltotal}}</td>
+                    <td>{{dataObj.monthlydata.countryconfirmationtotal}}</td>
+                    <td>{{dataObj.monthlydata.countrypartnertotal}}</td>
+                </tr>
+            </table><br>
+
+        </div>
+        <div class="page-break"><br>
+            <h1 class="content-center" style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Data for Current Month <br>( {{dataObj.monthlydate}} - Till Today)</b> </h1>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Treatment wise Queries</b> </h1>
+
+            <br>
+            <table>
+                <tr>
+                    <th>Treatment</th>
+                    <th>Queries</th>
+                    <th>VIL</th>
+                    <th>Patient Confirmation</th>
+                    <th>Referral Partner</th>
+
+                </tr>
+                {{#dataObj.monthlydata}}{{#treatment}}
+
+                <tr>
+
+                    <td>{{value}}</td>
+                    <td>{{count}}</td>
+                    <td>{{vil}}</td>
+                    <td>{{confirmation}}</td>
+                    <td>{{refferalpartner}}</td>
+
+                </tr>
+                {{/ treatment}} {{/dataObj.monthlydata}}
+
+                <tr class="table-warning color">
+                    <td>Total</td>
+                    <td>{{dataObj.monthlydata.treatmentquerytotal}}</td>
+                    <td>{{dataObj.monthlydata.treatmentviltotal}}</td>
+                    <td>{{dataObj.monthlydata.treatmentconfirmationtotal}}</td>
+                    <td>{{dataObj.monthlydata.treatmentpartnertotal}}</td>
+                </tr>
+            </table><br>
+
+        </div>
+        <div class="page-break"><br>
+            <h1 class="content-center" style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Data for Current Month <br>( {{dataObj.monthlydate}} - Till Today)</b> </h1>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Hospital wise Queries</b> </h1>
+
+            <br>
+            <table>
+                <tr>
+                    <th>Hospitals</th>
+                    <th>Queries</th>
+                    <th>VIL</th>
+                    <th>Patient Confirmation</th>
+
+                </tr>
+                {{#dataObj.monthlydata}}{{#hospital}}
+
+                <tr>
+
+                    <td>{{value}}</td>
+                    <td>{{count}}</td>
+                    <td>{{hospitalvil}}</td>
+                    <td>{{hospitalconfirmation}}</td>
+
+                </tr>
+                {{/ hospital}} {{/dataObj.monthlydata}}
+
+                <tr class="table-warning color">
+                    <td>Total</td>
+                    <td>{{dataObj.monthlydata.hospitalcounttotal}}</td>
+                    <td>{{dataObj.monthlydata.hospitalviltotal}}</td>
+                    <td>{{dataObj.monthlydata.hospitalconfirmationtotal}}</td>
+
+                </tr>
+            </table><br>
+
+        </div> -->
+        <!-- 6th page -->
+        <!-- <div class="page-break"><br>
+            <h1 class="content-center" style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Data for Financial Year ({{dataObj.yearlyyear}}) <br>  
+                {{dataObj.yearlydate}} - Till Today</b> </h1>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Country wise Queries</b> </h1>
+
+            <br>
+            <table>
+                <tr>
+                    <th>Country</th>
+                    <th>Queries</th>
+                    <th>VIL</th>
+                    <th>Patient Confirmation</th>
+                    <th>Referral Partner</th>
+                </tr>
+                {{#dataObj.annualdata}}{{#country}}
+
+                <tr>
+
+                    <td>{{value}}</td>
+                    <td>{{count}}</td>
+                    <td>{{vil}}</td>
+                    <td>{{confirmation}}</td>
+                    <td>{{refferalpartner}}</td>
+                </tr>
+                {{/country}} {{/dataObj.annualdata}}
+
+                <tr class="table-warning color">
+                    <td>Total</td>
+                    <td>{{dataObj.annualdata.countryquerytotal}}</td>
+                    <td>{{dataObj.annualdata.countryviltotal}}</td>
+                    <td>{{dataObj.annualdata.countryconfirmationtotal}}</td>
+                    <td>{{dataObj.annualdata.countrypartnertotal}}</td>
+                </tr>
+            </table><br>
+
+        </div>
+        <div class="page-break"><br>
+            <h1 class="content-center" style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Data for Financial Year ({{dataObj.yearlyyear}}) <br>  
+                {{dataObj.yearlydate}} - Till Today</b> </h1>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Treatment wise Queries</b> </h1>
+
+            <br>
+            <table>
+                <tr>
+                    <th>Treatment</th>
+                    <th>Queries</th>
+                    <th>VIL</th>
+                    <th>Patient Confirmation</th>
+                    <th>Referral Partner</th>
+
+                </tr>
+                {{#dataObj.annualdata}}{{#treatment}}
+
+                <tr>
+
+                    <td>{{value}}</td>
+                    <td>{{count}}</td>
+                    <td>{{vil}}</td>
+                    <td>{{confirmation}}</td>
+                    <td>{{refferalpartner}}</td>
+
+                </tr>
+                {{/ treatment}} {{/dataObj.annualdata}}
+
+                <tr class="table-warning color">
+                    <td>Total</td>
+                    <td>{{dataObj.annualdata.treatmentquerytotal}}</td>
+                    <td>{{dataObj.annualdata.treatmentviltotal}}</td>
+                    <td>{{dataObj.annualdata.treatmentconfirmationtotal}}</td>
+                    <td>{{dataObj.annualdata.treatmentpartnertotal}}</td>
+                </tr>
+            </table><br>
+
+        </div>
+        <div class="page-break"><br>
+            <h1 class="content-center" style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Data for Financial Year ({{dataObj.yearlyyear}}) <br> 
+                {{dataObj.yearlydate}} - Till Today</b> </h1>
+            <h1 class="content-center " style="font-family: 'Roboto', sans-serif; font-size: 15px;"> <b>Hospital wise Queries</b> </h1>
+
+            <br>
+            <table>
+                <tr>
+                    <th>Hospitals</th>
+                    <th>Queries</th>
+                    <th>VIL</th>
+                    <th>Patient Confirmation</th>
+
+                </tr>
+                {{#dataObj.annualdata}}{{#hospital}}
+
+                <tr>
+
+                    <td>{{value}}</td>
+                    <td>{{count}}</td>
+                    <td>{{hospitalvil}}</td>
+                    <td>{{hospitalconfirmation}}</td>
+
+                </tr>
+                {{/ hospital}} {{/dataObj.annualdata}}
+
+                <tr class="table-warning color">
+                    <td>Total</td>
+                    <td>{{dataObj.annualdata.hospitalcounttotal}}</td>
+                    <td>{{dataObj.annualdata.hospitalviltotal}}</td>
+                    <td>{{dataObj.annualdata.hospitalconfirmationtotal}}</td>
+
+                </tr>
+            </table><br>
+
+        </div> -->
+        <div id="pageFooter" style="margin-bottom: 50px; margin-left: 20px;">
+
+
+            <img width=150px; height=60px; src="https://operationfile.s3.ap-south-1.amazonaws.com/{{dataObj.company.logosize1}}" alt="Company Logo">
+            <span style="position: absolute; font-family: 'Roboto', sans-serif; right:30px; font-weight: 700; font-size: 12px;">Powered by</span>
+            <img style="position: absolute; right:30px; top:30px" width=150px; height=40px; src="https://operationfile.s3.ap-south-1.amazonaws.com/SimplifyMVT.png" alt="simplyfyMVT.com logo">
+
+        </div>
+</body>
+
+</html>

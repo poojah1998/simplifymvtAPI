@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: 'Arial';
+            font-size: 11px;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+        
+        .hospital_logo {
+            position: relative;
+            left: 1%;
+        }
+        
+        .date_div {}
+        
+        .logo {
+            height: 145px;
+            width: 145px;
+        }
+        
+        hr {
+            width: 20%;
+        }
+        
+        .term_data {
+            margin-left: 0px;
+        }
+        
+        .footer_div {
+            text-align: center;
+        }
+        
+        .sign_stamp {
+            display: flex;
+        }
+        
+        .sign {
+            width: 160px;
+            height: 80px;
+        }
+        
+        .sign_img {
+            width: 160px;
+            height: 80px;
+        }
+        
+        .stamp {
+            margin-left: 50px;
+            width: 200px;
+            height: 150px;
+        }
+        
+        .stamp_img {
+            width: 200px;
+            height: 150px;
+        }
+        
+        .borderless td,
+        .borderless th {
+            border: none;
+        }
+        
+        .main_body {
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        
+        td {
+            border-style: solid;
+            border-width: 5px;
+            word-wrap: break-word;
+            font-size: 10px;
+        }
+        
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        
+        .heading {
+            width: 230px;
+        }
+        
+        .bankHeading {
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_body">
+
+
+        <!-- First page -->
+        <div class="page-break">
+            <!-- Header -->
+            <header style="margin-bottom:15px">
+                <div class="hospital_logo">
+                    <img class="logo" src="https://operationfile.s3.ap-south-1.amazonaws.com/{{dataObj.hospitalLogo}}">
+
+                </div>
+                <div style="position: relative; left: 72%; margin-top: -114px;">
+                    <p> {{# dataObj}} {{#address}}
+                        <b>{{point1}}</b><br>{{/ address}} {{/dataObj}}
+                        <a href="mailto:{{dataObj.companyEmail}}">{{dataObj.companyEmail}}</a> </p>
+                    <strong style="font-size: 11px;">Dated: {{dataObj.date}}</strong>
+                </div>
+            </header>
+
+            <div class="main">
+
+                <center>
+                    <h2>Proforma Invoice / Treatment Estimate</h2>
+                    <hr>
+                </center>
+                <div class="table_data">
+                    <p>To <br> Whome so ever it may concern</p>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="heading"><strong>Patient Name</strong> </td>
+                                <td>{{dataObj.patientName}}</td>
+                            </tr>
+                            <tr>
+                                <td class="heading"> <b>Daignosiys/Procedure</b> </td>
+                                <td>{{dataObj.treatmentPlan}}.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="heading">
+                                    <b>Evaluation Cost (in USD)</b> <br>
+
+                                </td>
+                                <td>
+                                    Approx {{dataObj.initialEvaluationMinimum}} - {{dataObj.initialEvaluationMaximum}} USD
+
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td class="heading">
+                                    <b>Treatment / Surgery Cost (in USD)</b>
+
+                                </td>
+                                {{# dataObj }} {{# hospitalName}}
+                                <td> {{# treatment}} {{id}}. {{name}} {{#roomType}} in {{roomType}} {{/roomType}} - {{minCost}} {{^maxCost}} {{/maxCost}} {{#maxCost}} to {{maxCost}} {{/maxCost}} USD<br> {{/ treatment}}
+                                </td>
+                                {{/ hospitalName}} {{/ dataObj }}
+
+                            </tr>
+                            <tr>
+                                <td class="heading">
+                                    <b>Length of Stay</b>
+
+                                </td>
+                                <td>
+                                    Approx {{dataObj.stayInCountry}} {{dataObj.countryDuration}} in Country<br> Approx {{dataObj.stayInHospital}} {{dataObj.hospitalDuration}} in Hospital
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="heading"> <b>Consultant / Doctor name</b> </td>
+                                <td>
+                                    {{dataObj.doctorName}}
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td class="heading"> <b>Remarks</b> </td>
+                                <td>
+                                    {{dataObj.remarks}}
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <!-- Terms & Condition -->
+                <div class="term_condi page-break">
+                    <strong style="font-size: 12px;padding-top:30px;">Term of Payment:</strong>
+                    <div class="term_data" style="margin-top:10px;">
+                        <p style="font-size:10px;"> 1. The above quote includes the approx. cost of treatment based on the investigations or clinical details received.<br> 2.The cost of guest house accommodation, discharge medications if required, will be extra. <br> 3. The above
+                            quote does not include charges for any cross consultation, special investigations, extended stay and treatment for any other illness. <br> 4. Payment can be done by cash/major credit cards on arrival or by wire-transfer prior
+                            to the arrival (Bank Details given below).<br> 5. Refund of wire transferred amount (if any) will be transferred back to the same bank account from where the payment has been received. <br> 6. As per Government of India Foreign
+                            Exchange rules, all patients/passengers travelling to India and have in their possession currency exceeding USD 5000 or travelers cheque exceeding USD 10000 should declare to the customs at airport in India.
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <!-- Bank Details -->
+                <div class="bank-details" style="margin-top:-15px">
+                    <strong style="font-size: 12px;">Bank Details:</strong>
+                    <table class="table borderless" style="padding: 0px;">
+                        <tbody>
+                            <tr>
+                                <td class="bankHeading">Beneficiary Name:</td>
+                                <td>{{dataObj.beneficiaryName}}</td>
+                            </tr>
+                            <tr>
+                                <td class="bankHeading">Bank account no.:</td>
+                                <td>{{dataObj.accountNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="bankHeading">Type of account:</td>
+                                <td>{{dataObj.accountType}}</td>
+                            </tr>
+                            <tr>
+                                <td class="bankHeading">Name of Bank:</td>
+                                <td>{{dataObj.bankName}}</td>
+                            </tr>
+                            <tr>
+                                <td class="bankHeading">Branch:</td>
+                                <td>{{dataObj.branch}}</td>
+                            </tr>
+                            <tr>
+                                <td class="bankHeading">Address:</td>
+                                <td> {{#dataObj}}{{#bankAaddress}} {{address}}<br> {{/bankAaddress}}{{/dataObj}}
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="bankHeading">City:</td>
+                                <td>
+                                    {{dataObj.city}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="bankHeading">Sate:</td>
+                                <td>
+                                    {{dataObj.state}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="bankHeading">IFSC code:</td>
+                                <td>
+                                    {{dataObj.ifscCode}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="bankHeading">Branch Code:</td>
+                                <td>
+                                    {{dataObj.branchCode}}
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- Second Page -->
+        <div style="margin-top:-15px">
+            <p>Your sincinerly,</p>
+            <p>{{dataObj.hospitalUsername}}</p>
+
+            <div class="sign_stamp">
+                <div class="sign">
+                    <img class="sign_img" src="https://operationfile.s3.ap-south-1.amazonaws.com/{{dataObj.hospitalUserSignature}}" alt="Signnature">
+                </div>
+
+            </div>
+            <div>
+                <p>Signature by Authorized signatory<br>
+                    <b>{{dataObj.signName}}</b> <br> <br> {{dataObj.hospitalUserDesignation}} <br>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+
+</html>
