@@ -5,10 +5,12 @@ const { ObjectId } = require('mongodb');
 
 
 exports.postProfile = async(req, res, next) => {
+    console.log("11111111111");
     try {
         const { userid } = req.params;
         const profile = new Profile();
         profile.designation = req.body.designation;
+        console.log( profile.designation);
         profile.user = userid
         await profile.save()
         res.status(201).send({ message: "success" })
