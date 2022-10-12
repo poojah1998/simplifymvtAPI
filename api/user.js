@@ -9,13 +9,13 @@ const addUser =async(req,res,next)=>{
 }
 //findbyid
 const getUserById= async (req, res) => {
-    let result=await User.findById(req.query);
+    let result=await User.findById(req.params.id);
     res.send(result);
 };
 
 ////findbyiddelete
 const deleteUserById= async (req, res) => {
-    let result=await User.findByIdAndDelete(req.query);
+    let result=await User.findByIdAndDelete(req.params.id);
     res.send(result);
 };
 
@@ -23,15 +23,24 @@ const deleteUserById= async (req, res) => {
 
 ////findbyIdAndUpdate
 const updateUserById= async (req, res) => {
-    let result=await User.findByIdAndUpdate(req.query);
+    let result=await User.findByIdAndUpdate(req.params.id);
     res.send(result);
 };
+//getall users
+const getAllUserData= async (req, res) => {
+    let result=await User.find();
+    res.send(result);
+};
+
+
+
 
 
 module.exports={
     addUser,
     getUserById,
     deleteUserById,
-    updateUserById
+    updateUserById,
+    getAllUserData
 
 }

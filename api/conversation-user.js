@@ -9,13 +9,13 @@ const addConversationUser =async(req,res,next)=>{
 }
 //findbyid
 const getConversationUserById= async (req, res) => {
-    let result=await ConversationUser.findById(req.query);
+    let result=await ConversationUser.findById(req.params.id);
     res.send(result);
 };
 
 ////findbyiddelete
 const deleteConversationUserById= async (req, res) => {
-    let result=await ConversationUser.findByIdAndDelete(req.query);
+    let result=await ConversationUser.findByIdAndDelete(req.params.id);
     res.send(result);
 };
 
@@ -23,7 +23,7 @@ const deleteConversationUserById= async (req, res) => {
 
 ////findbyIdAndUpdate
 const updateConversationUserById= async (req, res) => {
-    let result=await ConversationUser.findByIdAndUpdate(req.query);
+    let result=await ConversationUser.findByIdAndUpdate(req.params.id);
     res.send(result);
 };
 

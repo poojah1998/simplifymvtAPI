@@ -19,28 +19,29 @@ router.use('/student',require('../api/student'));
 
 //user 
 router.post('/addUser',user.addUser);
-router.get('/findUser',user.getUserById);
-router.put('/updateUser',user.updateUserById);
-router.delete('/deleteUser',user.deleteUserById);
+router.get('/findUser/:id',user.getUserById);
+router.put('/updateUser/:id',user.updateUserById);
+router.delete('/deleteUser/:id',user.deleteUserById);
+router.get('/getAllUserData',user.getAllUserData);
 //chat
 router.post('/addChat',chat.addChat);
-router.get('/findChat',chat.getChatById);
-router.put('/updateChat',chat.updateChatById);
-router.delete('/deleteChat',chat.deleteChatById);
+router.get('/findChat/:id',chat.getChatById);
+router.put('/updateChat/:id',chat.updateChatById);
+router.delete('/deleteChat/:id',chat.deleteChatById);
 //conversation user
 router.post('/addconversationUser',conversationUser.addConversationUser);
-router.get('/findconversationUser',conversationUser.getConversationUserById);
-router.put('/updateconversationUser',conversationUser.updateConversationUserById);
-router.delete('/deleteconversationUser',conversationUser.deleteConversationUserById);
+router.get('/findconversationUser/:id',conversationUser.getConversationUserById);
+router.put('/updateconversationUser/:id',conversationUser.updateConversationUserById);
+router.delete('/deleteconversationUser/:id',conversationUser.deleteConversationUserById);
 //conversation 
 router.post('/addconversation',conversation.addConversation);
-router.get('/findconversation',conversation.getConversationById);
-router.put('/updateconversation',conversation.updateConversationById);
-router.delete('/deleteconversation',conversation.deleteConversationById);
+router.get('/findconversation/:id',conversation.getConversationById);
+router.put('/updateconversation/:id',conversation.updateConversationById);
+router.delete('/deleteconversation/:id',conversation.deleteConversationById);
 //hashtag
 
 router.post('/addhashtag',hashtag.addhashtag);
-router.get('/findhashtag',hashtag.gethashtagById);
-router.put('/updatehashtag',hashtag.updatehashtagById);
-router.delete('/deletehashtag',hashtag.deletehashtagById);
+router.get('/findhashtag/:id',hashtag.gethashtagById);
+router.put('/updatehashtag/:id',hashtag.updatehashtagById);
+router.delete('/deletehashtag/:id',hashtag.deletehashtagById);
 module.exports=router;

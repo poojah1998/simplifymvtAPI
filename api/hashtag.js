@@ -9,13 +9,13 @@ const addhashtag =async(req,res,next)=>{
 }
 //findbyid
 const gethashtagById= async (req, res) => {
-    let result=await hashtag.findById(req.query);
+    let result=await hashtag.findById(req.params.id);
     res.send(result);
 };
 
 ////findbyiddelete
 const deletehashtagById= async (req, res) => {
-    let result=await hashtag.findByIdAndDelete(req.query);
+    let result=await hashtag.findByIdAndDelete(req.params.id);
     res.send(result);
 };
 
@@ -23,7 +23,7 @@ const deletehashtagById= async (req, res) => {
 
 ////findbyIdAndUpdate
 const updatehashtagById= async (req, res) => {
-    let result=await hashtag.findByIdAndUpdate(req.query);
+    let result=await hashtag.findByIdAndUpdate(req.params.id);
     res.send(result);
 };
 
