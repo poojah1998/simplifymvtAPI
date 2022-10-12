@@ -15,7 +15,9 @@ const config=require('./config');
     console.log("cannot connect to the database MangoDB!",error);
 });
 
-app.use('/api',require('./routes/route'));
+// app.use('/api',require('./routes/route'));
+var route = require('./routes/route')
+app.use(route);
 app.listen(4000,()=>{
     console.log("Server is running"+4000);
 });
