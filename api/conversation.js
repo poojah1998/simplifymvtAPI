@@ -26,12 +26,17 @@ const updateConversationById= async (req, res) => {
     let result=await Conversation.findByIdAndUpdate(req.params.id);
     res.send(result);
 };
+//getall Conversation
+const getAllConversation= async (req, res) => {
+    let result=await Conversation.find();
+    res.send(result);
+};
 
 
 module.exports={
     addConversation,
     getConversationById,
     deleteConversationById,
-    updateConversationById
-
+    updateConversationById,
+    getAllConversation
 }

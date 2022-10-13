@@ -26,12 +26,15 @@ const updatehashtagById= async (req, res) => {
     let result=await hashtag.findByIdAndUpdate(req.params.id);
     res.send(result);
 };
-
-
+//getAllHashTag
+const getAllhashtag= async (req, res) => {
+    let result=await Chat.find();
+    res.send(result);
+};
 module.exports={
     addhashtag,
     gethashtagById,
     deletehashtagById,
-    updatehashtagById
-
+    updatehashtagById,
+    getAllhashtag
 }

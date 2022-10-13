@@ -26,12 +26,16 @@ const updateConversationUserById= async (req, res) => {
     let result=await ConversationUser.findByIdAndUpdate(req.params.id);
     res.send(result);
 };
-
+//getall ConversationUser
+const getAllConversationUser= async (req, res) => {
+    let result=await ConversationUser.find({conversation_id: req.params.id});
+    res.send(result);
+};
 
 module.exports={
     addConversationUser,
     getConversationUserById,
     deleteConversationUserById,
-    updateConversationUserById
-
+    updateConversationUserById,
+    getAllConversationUser
 }

@@ -27,11 +27,16 @@ const updateChatById= async (req, res) => {
     res.send(result);
 };
 
-
+//getall chats
+const getAllChatData= async (req, res) => {
+    let result=await Chat.find();
+    res.send(result);
+};
 module.exports={
     addChat,
     getChatById,
     deleteChatById,
-    updateChatById
+    updateChatById,
+    getAllChatData
 
 }
