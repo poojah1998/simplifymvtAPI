@@ -28,7 +28,7 @@ const updateConversationUserById= async (req, res) => {
 };
 //getall ConversationUser
 const getAllConversationUser= async (req, res) => {
-    let result=await ConversationUser.find({conversation_id: req.params.id});
+    let result=await ConversationUser.find({conversation_id: req.params.id}).populate("user_id");
     res.send(result);
 };
 

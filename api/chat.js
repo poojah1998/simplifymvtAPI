@@ -28,8 +28,8 @@ const updateChatById= async (req, res) => {
 };
 
 //getall chats
-const getAllChatData= async (req, res) => {
-    let result=await Chat.find();
+const getAllChatbyConversationId= async (req, res) => {
+    let result=await Chat.find({conversation_id: req.params.id});
     res.send(result);
 };
 module.exports={
@@ -37,6 +37,6 @@ module.exports={
     getChatById,
     deleteChatById,
     updateChatById,
-    getAllChatData
+    getAllChatbyConversationId
 
 }
