@@ -9,7 +9,6 @@ const chartSchema = new Schema({
     files:String,
     image:String,
     tag_id:String,
-    hashtag_id:String
-   
-});
+    hashtag_id:String,
+}, { timestamps: true });
 module.exports = mongoose.model('chat', chartSchema);

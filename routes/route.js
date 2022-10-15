@@ -23,7 +23,7 @@ router.post('/addChat',chat.addChat);
 router.get('/findChat/:id',chat.getChatById);
 router.put('/updateChat/:id',chat.updateChatById);
 router.delete('/deleteChat/:id',chat.deleteChatById);
-router.get('/getAllChatbyId',chat.getAllChatbyConversationId);
+router.get('/getAllChatbyId/:id',chat.getAllChatbyConversationId);
 
 //conversation user
 router.post('/addconversationUser',conversationUser.addConversationUser);
