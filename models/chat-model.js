@@ -3,12 +3,20 @@ const Schema = mongoose.Schema;
 
 
 const chartSchema = new Schema({
-    conversation_id :String,
-    sender_id:String,
+    conversation_id: {
+        type: Schema.Types.ObjectId, ref: 'conversation'
+    },
+    sender_id: {
+        type: Schema.Types.ObjectId, ref: 'user'
+    },
+    tag_id: {
+        type: Schema.Types.ObjectId, ref: 'hashtag'
+    },
+    hashtag_id: {
+        type: Schema.Types.ObjectId, ref: 'hashtag'
+    },
     message:String,
     files:String,
     image:String,
-    tag_id:String,
-    hashtag_id:String,
 }, { timestamps: true });
 module.exports = mongoose.model('chat', chartSchema);

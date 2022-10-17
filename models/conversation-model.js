@@ -5,7 +5,9 @@ const Schema = mongoose.Schema;
 const conversationSchema = new Schema({
     name: String,
     type:String,
-    owner_id:String,
+    owner_id: {
+        type: Schema.Types.ObjectId, ref: 'user'
+    },
     image:String,
     createdAt:{type:Date, default: Date.now},
     updatedAt:{type:Date,default: Date.now},

@@ -8,8 +8,6 @@ const hashtag =require('../api/hashtag');
 
 
 
-router.use('/student',require('../api/student'));
-
 
 
 //user 
