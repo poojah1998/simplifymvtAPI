@@ -10,10 +10,10 @@ const chartSchema = new Schema({
         type: Schema.Types.ObjectId, ref: 'user'
     },
     tag_id: {
-        type: Schema.Types.ObjectId, ref: 'hashtag'
+        type: Schema.Types.ObjectId, ref: 'hashtag',required:false
     },
     hashtag_id: {
-        type: Schema.Types.ObjectId, ref: 'hashtag'
+        type: Schema.Types.ObjectId, ref: 'hashtag',required:false
     },
     message:String,
     files:String,

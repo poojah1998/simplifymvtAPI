@@ -3,7 +3,7 @@ const cors = require('cors')
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended : false}));
-app.use(cors())
+app.use(cors());
 
 
 const config=require('./config');
@@ -14,11 +14,15 @@ const config=require('./config');
 }).catch((err)=>{
     console.log("cannot connect to the database MangoDB!",error);
 });
-
+require('./helper/socket')
 // app.use('/api',require('./routes/route'));
 var route = require('./routes/route')
 app.use(route);
 app.listen(4000,()=>{
     console.log("Server is running"+4000);
 });
-
+//  var socket = require('./helper/socket')
+//  app.use(socket);
+//  app.listen(4001,()=>{
+//     console.log("Server is running"+4001);
+//  })
