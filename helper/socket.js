@@ -11,14 +11,8 @@ const SOCKET = process.env.SOCKET;
 
 io.on('connection', (socket) => {
     console.log('user connected');
-    socket.on('new-checkpoint', (checked) => {
-        io.emit('new-checkpoint', checked);
-    })
-    socket.on('new-submit', (checked) => {
-        io.emit('new-submit', checked);
-    })
-    socket.on('new-qa', (checked) => {
-        io.emit('new-qa-emited', {checked, userId: checked.userId});
+    socket.on('new-message', (checked) => {
+        io.emit('new-message-emited', checked);
     })
 });
 
