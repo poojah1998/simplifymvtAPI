@@ -28,7 +28,7 @@ const updatehashtagById= async (req, res) => {
 };
 //getAllHashTag
 const getAllhashtag= async (req, res) => {
-    let result=await Chat.find();
+    let result=await hashtag.find();
     res.send(result);
 };
 module.exports={

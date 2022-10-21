@@ -16,6 +16,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
     "mongoose": "^6.0.12",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.8.0",
     "nodemon": "^2.0.14",
     "socket.io": "^1.7.3"
   },

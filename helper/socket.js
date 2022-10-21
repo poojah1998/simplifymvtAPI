@@ -10,7 +10,6 @@ const SOCKET = process.env.SOCKET;
 
 
 io.on('connection', (socket) => {
-    console.log('user connected');
     socket.on('new-message', (checked) => {
         io.emit('new-message-emited', checked);
     })
