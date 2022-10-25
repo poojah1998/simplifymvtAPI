@@ -1,13 +1,6 @@
 // import cron from 'node-cron';
 const nodemailer = require('nodemailer');
 
-// var cron = require('node-cron');
-
-// cron.schedule('*/10 * * * *', () => {
-//   console.log('running a task every 10 minutes');
-// });
-const express = require('express');
-app = express();
 
 let sendMail = async function (to, subject, message) {
     const smtpConfig = {
@@ -21,7 +14,7 @@ let sendMail = async function (to, subject, message) {
 
     let transporter = nodemailer.createTransport(smtpConfig);
     let mailOptions = {
-        from: '"simplify MVT" <info@simply.com>', // sender address
+        from: `simplify MVT <${process.env.GMAIL_ID}>`, // sender address
         to: [to,], // list of receivers
         subject: subject, // Subject line
         html: message // html body
