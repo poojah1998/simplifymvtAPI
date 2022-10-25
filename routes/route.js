@@ -5,9 +5,10 @@ const chat =require('../api/chat');
 const conversationUser =require('../api/conversation-user');
 const conversation =require('../api/conversation');
 const hashtag =require('../api/hashtag');
+const cron = require('../helper/process/cron')
 
-
-
+//cron
+router.get('/test',cron.sendMail);
 
 
 //user 
