@@ -1,8 +1,9 @@
 // import cron from 'node-cron';
 const nodemailer = require('nodemailer');
-
+require('dotenv').config();
 
 let sendMail = async function (to, subject, message) {
+    console.log("111111111111111111");
     const smtpConfig = {
         service: 'gmail',
         host: 'smtp.gmail.com',
@@ -10,7 +11,11 @@ let sendMail = async function (to, subject, message) {
             user: process.env.GMAIL_ID,
             pass: process.env.GMAIL_PASS
         }
+       
     };
+    console.log(process.env.GMAIL_ID);
+    console.log(process.env.GMAIL_PASS);
+
 
     let transporter = nodemailer.createTransport(smtpConfig);
     let mailOptions = {
@@ -21,7 +26,7 @@ let sendMail = async function (to, subject, message) {
     };
     try {
         let info = await transporter.sendMail(mailOptions)
-        console.log(info)
+        console.log(info,"yessssssssss")
     } catch (error) {
         console.log(error);
     }
