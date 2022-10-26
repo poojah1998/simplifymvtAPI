@@ -8,7 +8,7 @@ const hashtag =require('../api/hashtag');
 const cron = require('../helper/process/cron')
 
 //cron
-router.get('/test',cron.sendMail);
+router.get('/test',cron.testCron);
 
 
 //user 

@@ -18,8 +18,7 @@ const chartSchema = new Schema({
     message:String,
     files:String,
     image:String,
-    taggedUsers: Array,
-    mentionUsers:Array,
+    allMentionUsers:Array,
     isMailAvailability:Boolean,
     isMailDelivered:Boolean,
 }, { timestamps: true });

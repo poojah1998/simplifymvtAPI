@@ -15,7 +15,7 @@ let sendMail = async function (to, subject, message) {
     let transporter = nodemailer.createTransport(smtpConfig);
     let mailOptions = {
         from: `simplify MVT <${process.env.GMAIL_ID}>`, // sender address
-        to: [to,], // list of receivers
+        to: to, // list of receivers
         subject: subject, // Subject line
         html: message // html body
     };
@@ -27,3 +27,5 @@ let sendMail = async function (to, subject, message) {
     }
 
 }
+
+module.exports = sendMail;
