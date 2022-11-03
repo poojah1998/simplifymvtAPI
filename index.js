@@ -18,8 +18,8 @@ require('./helper/socket')
 // app.use('/api',require('./routes/route'));
 var route = require('./routes/route')
 app.use(route);
-app.listen(4000,()=>{
-    console.log("Server is running"+4000);
+app.listen(5066,()=>{
+    console.log("Server is running"+5066);
 });
 //  var socket = require('./helper/socket')
 //  app.use(socket);
