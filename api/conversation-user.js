@@ -32,7 +32,6 @@ const getAllConversationUser= async (req, res) => {
         let result=await ConversationUser.find({conversation_id: req.params.id}).populate("user_id");
         res.send(result);
     } catch (error) {
-        console.log("1111111111111");
         console.log(error);
     }
    
