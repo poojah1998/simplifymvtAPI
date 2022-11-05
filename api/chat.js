@@ -103,10 +103,7 @@ const uploadMulter = multer({
 
 router.post('/media', uploadMulter.single('file'), (req, res) => {
     if (req.file) {
-        console.log(req.file)
-    }
-    else {
-        
+        res.send(req.file)
     }
 });
 

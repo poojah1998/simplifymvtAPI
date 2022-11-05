@@ -1,7 +1,7 @@
 
 const Conversation =require('../models/conversation-model')
-
-
+const async = require('async');
+const ConversationUser =require('../models/conversation-user-model')
 
 const addConversation =async(req,res,next)=>{
     let result =await Conversation.create(req.body);
@@ -33,10 +33,49 @@ const getAllConversation= async (req, res) => {
 };
 
 
+const getAllConversationUser= async (req, res) => {
+    try {
+        let result=await ConversationUser.find({conversation_id: req.params.id}).populate("user_id");
+        res.send(result);
+    } catch (error) {
+        console.log(error);
+    }
+   
+};
+//INDIVISUAL CONVERSATION
+const userConversation= async (req, res) => {
+    try {
+    let convUsers=await ConversationUser.find({user_id:req.params.id});
+    let data = [];
+    async.each(convUsers,(user,after_user) =>{
+        Conversation.findById(user.conversation_id).then(conversation =>{
+            data.push(conversation);
+            after_user();
+        }).catch(error =>{
+            after_user();
+            res.send(error);
+        })
+    },(err) =>{
+        if(err) {
+            res.send(err);
+        }
+        else {
+            res.send(data);
+        }
+    })
+    
+} catch (error) {
+    console.log(error);
+}
+};
+
+
+
 module.exports={
     addConversation,
     getConversationById,
     deleteConversationById,
     updateConversationById,
-    getAllConversation
+    getAllConversation,
+    userConversation
 }
