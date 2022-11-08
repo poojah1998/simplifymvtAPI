@@ -9,7 +9,5 @@ const conversationSchema = new Schema({
         type: Schema.Types.ObjectId, ref: 'user'
     },
     image:String,
-    createdAt:{type:Date, default: Date.now},
-    updatedAt:{type:Date,default: Date.now},
-});
+}, { timestamps: true });
 module.exports = mongoose.model('conversation', conversationSchema);

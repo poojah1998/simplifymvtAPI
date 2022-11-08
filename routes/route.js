@@ -24,6 +24,8 @@ router.get('/findChat/:id',chat.getChatById);
 router.put('/updateChat/:id',chat.updateChatById);
 router.delete('/deleteChat/:id',chat.deleteChatById);
 router.get('/getAllChatbyId/:id',chat.getAllChatbyConversationId);
+router.get('/getAllChatImage/:id',chat.getAllChatImage);
+router.get('/getAllChatFile/:id',chat.getAllChatFile);
 router.use('/upload',chat.router);
 //conversation user
 router.post('/addconversationUser',conversationUser.addConversationUser);
@@ -31,6 +33,8 @@ router.get('/findconversationUser/:id',conversationUser.getConversationUserById)
 router.put('/updateconversationUser/:id',conversationUser.updateConversationUserById);
 router.delete('/deleteconversationUser/:id',conversationUser.deleteConversationUserById);
 router.get('/getAllconversationUser/:id',conversationUser.getAllConversationUser);
+router.get('/addMoreUser',conversationUser.addManyUser);
+
 //conversation 
 router.post('/addconversation',conversation.addConversation);
 router.get('/findconversation/:id',conversation.getConversationById);

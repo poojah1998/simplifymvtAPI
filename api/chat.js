@@ -32,7 +32,17 @@ const getAllChatbyConversationId = async (req, res) => {
     let result = await Chat.find({ conversation_id: req.params.id });
     res.send(result);
 };
+//get all chat by images
+const getAllChatImage = async (req, res) => {
+    let result = await Chat.find({ conversation_id: req.params.id ,"image": { $ne: '' }});
+    res.send(result);
+};
 
+//get all chat by file
+const getAllChatFile = async (req, res) => {
+    let result = await Chat.find({ conversation_id: req.params.id ,"files": { $ne: '' }});
+    res.send(result);
+};
 
 var aws = require('aws-sdk');
 var express = require('express');
@@ -54,7 +64,11 @@ const fileFilter = (req, file, cb) => {
         cb(null, 'images')
     } else if (file.mimetype === 'application/pdf') {
         cb(null, 'files')
-    } else {
+    } 
+    else if (file.mimetype.includes('audio/') ){
+        cb(null, 'files')
+    }
+    else {
         cb({ error: 'Mime type not supported' })
     }
 }
@@ -102,6 +116,7 @@ const uploadMulter = multer({
 
 
 router.post('/media', uploadMulter.single('file'), (req, res) => {
+    console.log(req.file)
     if (req.file) {
         res.send(req.file)
     }
@@ -118,4 +133,6 @@ module.exports = {
     updateChatById,
     router,
     getAllChatbyConversationId,
+    getAllChatImage,
+    getAllChatFile
 }

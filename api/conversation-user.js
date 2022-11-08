@@ -36,11 +36,16 @@ const getAllConversationUser= async (req, res) => {
     }
    
 };
-
+//insert many  users
+const addManyUser =async(req,res,next)=>{
+    let result =await ConversationUser.insertMany(req.body.data);
+    res.send({msg:"users added successfully",ConversationUserData:result})
+}
 module.exports={
     addConversationUser,
     getConversationUserById,
     deleteConversationUserById,
     updateConversationUserById,
-    getAllConversationUser
+    getAllConversationUser,
+    addManyUser
 }
