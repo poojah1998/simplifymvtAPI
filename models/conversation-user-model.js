@@ -8,7 +8,10 @@ const conversationUserSchema = new Schema({
         type: Schema.Types.ObjectId, ref: 'conversation'
     },
     user_id: {
-        type: Schema.Types.ObjectId, ref: 'user'
+        type: Schema.Types.ObjectId,
+    },
+    user_type: {
+        type: String, 
     },
     isAdmin: Boolean,
     isReferal:Boolean

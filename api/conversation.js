@@ -33,15 +33,7 @@ const getAllConversation= async (req, res) => {
 };
 
 
-const getAllConversationUser= async (req, res) => {
-    try {
-        let result=await ConversationUser.find({conversation_id: req.params.id}).populate("user_id");
-        res.send(result);
-    } catch (error) {
-        console.log(error);
-    }
-   
-};
+
 //INDIVISUAL CONVERSATION
 const userConversation= async (req, res) => {
     try {
