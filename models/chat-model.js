@@ -18,6 +18,7 @@ const chartSchema = new Schema({
     message:String,
     files:String,
     image:String,
+    mediaName:String,
     allMentionUsers:Array,
     isMailAvailability:Boolean,
     isMailDelivered:Boolean,

@@ -33,7 +33,7 @@ router.get('/findconversationUser/:id',conversationUser.getConversationUserById)
 router.put('/updateconversationUser/:id',conversationUser.updateConversationUserById);
 router.delete('/deleteconversationUser/:id',conversationUser.deleteConversationUserById);
 router.get('/getAllconversationUser/:id',conversationUser.getAllConversationUser);
-router.get('/addMoreUser',conversationUser.addManyUser);
+router.post('/addMoreUser',conversationUser.addManyUser);
 
 //conversation 
 router.post('/addconversation',conversation.addConversation);

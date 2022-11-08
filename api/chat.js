@@ -83,7 +83,7 @@ const uploadMulter = multer({
             callBack(null, { fieldName: file.fieldname })
         },
         key: function (req, file, cb) {
-            cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname)
+            cb(null, new Date().getTime() + file.originalname)
         }
     }),
     fileFilter: fileFilter
