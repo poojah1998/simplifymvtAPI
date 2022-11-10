@@ -6,7 +6,7 @@ const conversationSchema = new Schema({
     name: String,
     type:String,
     owner_id: {
-        type: Schema.Types.ObjectId, ref: 'user'
+        type: Schema.Types.ObjectId,
     },
     image:String,
 }, { timestamps: true });

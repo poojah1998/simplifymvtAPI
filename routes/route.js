@@ -8,6 +8,8 @@ const hashtag =require('../api/hashtag');
 const cron = require('../helper/process/cron');
 const doctor = require('../api/doctor');
 const refferal = require('../api/refferal');
+const hospital = require('../api/hospital');
+const patient = require('../api/patient');
 //cron
 router.get('/test',cron.testCron);
 
@@ -56,6 +58,13 @@ router.get('/getAllhashtag',hashtag.getAllhashtag);
 router.get('/getAllDoctors',doctor.getAllDoctors);
 router.post('/addDoctor',doctor.addDoctor);
 
+//hospital
+router.get('/getAllhospitals',hospital.getAllhospitals);
+router.post('/addhospital',hospital.addhospital);
+
 //refferals
 router.get('/allRefferals',refferal.getAllRefferal);
+//patients
+router.get('/getAllPatients',patient.getAllPatients);
+router.post('/addhospital',patient.addPatient);
 module.exports=router;
