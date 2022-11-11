@@ -42,7 +42,7 @@ router.post('/addconversation',conversation.addConversation);
 router.get('/findconversation/:id',conversation.getConversationById);
 router.put('/updateconversation/:id',conversation.updateConversationById);
 router.delete('/deleteconversation/:id',conversation.deleteConversationById);
-router.get('/getAllconversation',conversation.getAllConversation);
+router.get('/getAllconversation/:id',conversation.getAllConversation);
 router.get('/ownChatUsers/:id',conversation.userConversation);
 //hashtag
 
