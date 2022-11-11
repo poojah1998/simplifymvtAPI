@@ -19,7 +19,8 @@ const getConversationUserById = async (req, res) => {
 
 ////findbyiddelete
 const deleteConversationUserById = async (req, res) => {
-    let result = await ConversationUser.findByIdAndDelete(req.params.id);
+    let result = await ConversationUser.deleteOne(req.params.id);
+    
     res.send(result);
 };
 
