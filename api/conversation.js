@@ -28,7 +28,7 @@ const updateConversationById= async (req, res) => {
 };
 //getall Conversation
 const getAllConversation= async (req, res) => {
-    let result=await Conversation.find();
+    let result=await Conversation.find().sort({createdAt: -1});
     res.send(result);
 };
 

@@ -1,10 +1,12 @@
 
 const ConversationUser = require('../models/conversation-user-model')
-const doctor = require('../models/doctor-model');
+
 const async = require('async');
 // const hospital = require('../models/hospital-model');
+const doctor = require('../models/doctor-model');
 const refferal = require('../models/refferal-model');
-
+const hospital = require ('../models/hospital-model.js');
+const patient = require ('../models/patient-model');
 const addConversationUser = async (req, res, next) => {
     let result = await ConversationUser.create(req.body);
     res.send({ msg: "ConversationUser added successfully", ConversationUserData: result })
@@ -57,6 +59,20 @@ const getAllConversationUser = async (req, res) => {
             } else if (user.user_type == 'Referral') {
                 refferal.findById(user.user_id).then((reffUser) => {
                     user.user_id = JSON.parse(JSON.stringify(reffUser));
+                    data.push(user);
+                    after_user();
+                })
+
+            }else if (user.user_type == 'Hospital') {
+                hospital.findById(user.user_id).then((hosUser) => {
+                    user.user_id = JSON.parse(JSON.stringify(hosUser));
+                    data.push(user);
+                    after_user();
+                })
+
+            }else if (user.user_type == 'Patient') {
+                patient.findById(user.user_id).then((patientUser) => {
+                    user.user_id = JSON.parse(JSON.stringify(patientUser));
                     data.push(user);
                     after_user();
                 })
