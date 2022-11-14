@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 let sendMail = async function (to, subject, message) {
-    console.log("111111111111111111");
+    // console.log("111111111111111111");
     const smtpConfig = {
         service: 'gmail',
         host: 'smtp.gmail.com',

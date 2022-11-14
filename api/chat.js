@@ -9,7 +9,7 @@ const addChat = async (req, res, next) => {
 }
 //findbyid
 const getChatById = async (req, res) => {
-    let result = await Chat.findById(req.params.id);
+    let result = await Chat(req.params.id);
     res.send(result);
 };
 
@@ -29,7 +29,7 @@ const updateChatById = async (req, res) => {
 
 //getall chats
 const getAllChatbyConversationId = async (req, res) => {
-    let result = await Chat.find({ conversation_id: req.params.id });
+    let result = await Chat.find({ conversation_id: req.params.id }).limit(50).skip(parseInt(req.params.pageNumber));
     res.send(result);
 };
 //get all chat by images

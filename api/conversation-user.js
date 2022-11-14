@@ -43,12 +43,12 @@ const updateConversationUserById = async (req, res) => {
 // };
 const getAllConversationUser = async (req, res) => {
     try {
-        console.log("coming...........")
+        // console.log("coming...........")
         let convUser = await ConversationUser.find({ conversation_id: req.params.id })
         let data = [];
         async.each(convUser, (user, after_user) => {
-            console.log("1111111111");
-            console.log(user.user_type);
+            // console.log("1111111111");
+            // console.log(user.user_type);
             user = JSON.parse(JSON.stringify(user));
             if (user.user_type == 'Doctor') {
                 doctor.findById(user.user_id).then((docUser) => {

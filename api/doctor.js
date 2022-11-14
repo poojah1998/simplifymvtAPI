@@ -3,7 +3,7 @@ const doctor = require('../models/doctor-model')
 
 //getall Doctors
 const getAllDoctors = async (req, res) => {
-    console.log("111111111111111111");
+    // console.log("111111111111111111");
     let result = await doctor.find();
     console.log(result);
     res.send(result);

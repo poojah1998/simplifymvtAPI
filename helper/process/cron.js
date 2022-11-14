@@ -18,12 +18,12 @@ const testCron = async (req, res) => {
             console.log("wwwwwwwwwwwwwwwwwwwww", mUser)
             User.findById(mUser).then(user => {
                 if (user) {
-                    console.log('1111111111111111111111')
+                    // console.log('1111111111111111111111')
                     emailArray.push(user.email);
                     after_mUser();
                 }
                 else {
-                    console.log('2222222222222')
+                    // console.log('2222222222222')
                     after_mUser();
                     res.send("error 000");
                 }

@@ -3,7 +3,7 @@ const refferal = require('../models/refferal-model')
 
 //getall Doctors
 const getAllRefferal = async (req, res) => {
-    console.log("111111111111111111");
+    // console.log("111111111111111111");
     let result = await refferal.find();
     console.log(result);
     res.send(result);

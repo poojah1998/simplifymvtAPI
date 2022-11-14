@@ -25,7 +25,7 @@ router.post('/addChat',chat.addChat);
 router.get('/findChat/:id',chat.getChatById);
 router.put('/updateChat/:id',chat.updateChatById);
 router.delete('/deleteChat/:id',chat.deleteChatById);
-router.get('/getAllChatbyId/:id',chat.getAllChatbyConversationId);
+router.get('/getAllChatbyId/:id/:pageNumber',chat.getAllChatbyConversationId);
 router.get('/getAllChatImage/:id',chat.getAllChatImage);
 router.get('/getAllChatFile/:id',chat.getAllChatFile);
 router.use('/upload',chat.router);
