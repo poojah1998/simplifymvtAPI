@@ -16,5 +16,5 @@ const conversationUserSchema = new Schema({
     isAdmin: Boolean,
     isReferal:Boolean
    
-});
+}, { timestamps: true });
 module.exports = mongoose.model('conversationUser', conversationUserSchema);

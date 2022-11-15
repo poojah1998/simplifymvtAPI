@@ -1,8 +1,8 @@
 
 const Conversation =require('../models/conversation-model')
 const async = require('async');
-const ConversationUser =require('../models/conversation-user-model')
-
+const ConversationUser =require('../models/conversation-user-model');
+const chat = require('../models/chat-model');
 const addConversation =async(req,res,next)=>{
     let result =await Conversation.create(req.body);
     res.send({msg:"Conversation added successfully",ConversationData:result})
@@ -37,12 +37,18 @@ const getAllConversation= async (req, res) => {
 //INDIVISUAL CONVERSATION
 const userConversation= async (req, res) => {
     try {
-    let convUsers=await ConversationUser.find({user_id:req.params.id});
+    let convUsers=await ConversationUser.find({user_id:req.params.id})
     let data = [];
     async.each(convUsers,(user,after_user) =>{
         Conversation.findById(user.conversation_id).then(conversation =>{
+            conversation =   JSON.parse(JSON.stringify(conversation))
+            // console.log(conversation);
+         chat.find({ conversation_id: user.conversation_id }).limit(1).sort({createdAt: -1}).then(lastChatDoc =>{
+            conversation['lastChatDoc'] = lastChatDoc.length > 0 ? lastChatDoc[0]:{};
             data.push(conversation);
             after_user();
+         })
+            
         }).catch(error =>{
             after_user();
             res.send(error);
